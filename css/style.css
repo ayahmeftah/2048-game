@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+body {
+    font-family: 'Josefin sans', sans-serif;
+    text-align: center;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.score {
+    display: block;
+    margin: auto;
+    width: 80px;
+    height: 60px;
+    padding: 10px;
+    background-color: #E0F7FF;
+    border-radius: 10px;
+}
+
+#score-header {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.grid-container {
+    display: inline-block;
+    background: #bbc1c6;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 340px;
+    height: 340px;
+}
+
+.cell {
+    width: 75px;
+    height: 75px;
+    margin: 5px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px; */
+}
+
+.t2{
+    background-color: #bdf2ff;
+    color: black;
+}
+.t4{
+    background-color: #9cecff;
+    color: #000000;
+}
+.t8{
+    background-color: #80E2FF;
+    color: black;
+}
+.t16{
+    background-color: #80b7ff;
+    color: black;
+}
+.t32{
+    background-color: #80a2ff;
+    color: black;
+}
+.t64{
+    background-color: #8480ff;
+    color: black;
+}
+.t128{
+    background-color: #a76efd;
+    color: black;
+}
+.t256{
+    background-color: #9450fa;
+    color: black;
+}
+.t512{
+    background-color: #7529e8;
+    color: black;
+}
+.t1024{
+    background-color: #5713bc;
+    color: black;
+}
+.t2048{
+    background-color: #330d6d;
+    color: black;
+}
+
+.buttons{
+    margin-top: 30px;
+}
+
