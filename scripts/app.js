@@ -21,6 +21,7 @@ function init() {
     let wonGame = false;
 
     function render() {
+        // scoreElem.textContent = score;
         createGrid();
 
     }
@@ -42,23 +43,30 @@ function init() {
         }
     }
 
-    function addRandomTile() {
 
+    function addRandomTile() {
+        // emptyCells stores the position of each empty cell as an object
         let emptyCells = [];
         for (let r = 0; r < gridWidth; r++) {
             for (let c = 0; c < gridWidth; c++) {
-
+                // {r , c} is an object shorthand
                 if (grid[r][c] === 0) {
                     emptyCells.push({ r, c });
                 }
             }
         }
+
         if (emptyCells.length > 0) {
-            let { r, c } = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+
+            let randomIndex = Math.floor(Math.random() * emptyCells.length);
+            let randomCell = emptyCells[randomIndex];
+            let r = randomCell.r;
+            let c = randomCell.c;
+
             grid[r][c] = Math.random() > 0.1 ? 2 : 4;
         }
-    }
 
+    }
 
     // restartBtnElem.addEventListener('click',init);
 
