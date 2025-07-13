@@ -17,11 +17,12 @@ function init() {
         [0, 0, 0, 0],
         [0, 0, 0, 0]
     ]
+
     let gameOver = false;
     let wonGame = false;
 
     function render() {
-
+        score.textContent = score
         createGrid();
 
     }
@@ -70,25 +71,60 @@ function init() {
 
     function handleKeyPress(event) {
 
-        if (grid[r][c]) return;
+        if (gameOver) return;
 
         /* This switch statement was taken from stackoverflow, here is the link of the question (answerd by Gibolt):
         https://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript
+        The movement functions in each case were added by Ayah
         */
         switch (event.key) {
             case "ArrowLeft":
-                // Left pressed
+                moveLeft()
                 break;
             case "ArrowRight":
-                // Right pressed
+                moveRight()
                 break;
             case "ArrowUp":
-                // Up pressed
+                moveUp()
                 break;
             case "ArrowDown":
-                // Down pressed
+                moveDown()
                 break;
         }
+
+        addRandomTile();
+        render()
+
+    }
+
+
+    function moveLeft(){
+        for (let r = 0; r < gridWidth ; r++){
+            let row = grid[r].filter((value) => value)
+            for (let i = 0; i < row.length - 1; i++){
+
+                if(row[i] === row[i + 1]){
+                    row[i] *= 2
+                    row[i + 1] = 0
+                    score += row[i]
+                }
+            }
+
+            row = row.filter((value) => value)
+
+            while(row.length < gridWidth){
+                row.push(0)
+            }
+
+            grid[r] = row
+        }
+    }
+
+    function moveRight(){
+        
+    }
+
+    function moveUp(){
 
     }
 
@@ -96,21 +132,9 @@ function init() {
 
     }
 
-    function moveUp(){
-
-    }
-
-    function moveLeft(){
-
-    }
-
-    function moveRight(){
-        
-    }
-
 
     document.addEventListener('keydown', handleKeyPress);
-    // restartBtnElem.addEventListener('click',init);
+    restartBtnElem.addEventListener('click',init);
 
     addRandomTile();
     addRandomTile();
