@@ -60,52 +60,73 @@ h1 {
 }
 
 .t2{
-    background-color: #bdf2ff;
+    background-color: #a0d8f1;
     color: black;
 
 }
 .t4{
-    background-color: #9cecff;
+    background-color: #00b2ff;
     color: #000000;
 }
 .t8{
-    background-color: #80E2FF;
-    color: black;
+    background-color: #4169e1;
+    color: white;
 }
 .t16{
-    background-color: #80b7ff;
-    color: black;
+    background-color: #6f00ff;
+    color: white;
 }
 .t32{
-    background-color: #80a2ff;
-    color: black;
+    background-color: #7b1fa2;
+    color: white;
 }
 .t64{
-    background-color: #8480ff;
-    color: black;
+    background-color: #9966cc;
+    color: white;
 }
 .t128{
-    background-color: #a76efd;
-    color: black;
+    background-color: #f28bcf;
+    color: white;
 }
 .t256{
-    background-color: #9450fa;
-    color: black;
+    background-color: #ff2e8a;
+    color: white;
 }
 .t512{
-    background-color: #7529e8;
-    color: black;
+    background-color: #a94482;
+    color: white;
 }
 .t1024{
-    background-color: #5713bc;
-    color: black;
+    background-color: #55c8cc;
+    color: white;
 }
 .t2048{
-    background-color: #330d6d;
-    color: black;
+    background-color: #00d982;
+    color: white;
+    font-weight: 800;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 .buttons{
     margin-top: 30px;
 }
+
+#instructions{
+    font-family: 'Josefin sans', sans-serif;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+#restart{
+    font-family: 'Josefin sans', sans-serif;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+
 
