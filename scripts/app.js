@@ -18,6 +18,7 @@ function init() {
         [0, 0, 0, 0]
     ]
 
+    let mergedTiles = [];
     let gameOver = false;
     let wonGame = false;
 
@@ -35,15 +36,20 @@ function init() {
             for (let c = 0; c < gridWidth; c++) {
                 const cell = document.createElement('div');
                 cell.classList.add('cell');
-                cell.textContent = grid[r][c] !== 0 ? grid[r][c] : '';
-                if (grid[r][c] > 0) {
-                    cell.classList.add(`t${grid[r][c]}`);
+                const val = grid[r][c];
+                if (val > 0) {
+                    cell.textContent = val;
+                    cell.classList.add(`t${val}`);
+
+                    // Check if this tile is in the mergedTiles list
+                    if (mergedTiles.some(tile => tile.r === r && tile.c === c)) {
+                        cell.classList.add('merged');
+                    }
                 }
                 gridElem.appendChild(cell);
             }
         }
     }
-
 
     function addRandomTile() {
         // emptyCells stores the position of each empty cell as an object
@@ -93,12 +99,13 @@ function init() {
         }
 
         addRandomTile();
-        render()
+        render();
 
     }
 
 
     function moveLeft() {
+        mergedTiles = [];
         for (let r = 0; r < gridWidth; r++) {
 
             let row = grid[r].filter((notEmptyCell) => notEmptyCell)
@@ -108,6 +115,7 @@ function init() {
                     row[i] *= 2
                     row[i + 1] = 0
                     score += row[i]
+                    mergedTiles.push({ r: r, c: i });
                 }
             }
 
@@ -122,6 +130,7 @@ function init() {
     }
 
     function moveRight() {
+        mergedTiles = [];
         for (let r = 0; r < gridWidth; r++) {
 
             let row = grid[r].filter((notEmptyCell) => notEmptyCell)
@@ -131,6 +140,7 @@ function init() {
                     row[i] *= 2
                     row[i - 1] = 0
                     score += row[i]
+                    mergedTiles.push({ r: r, c: i });
                 }
             }
             row = row.filter((notEmptyCell) => notEmptyCell)
@@ -144,6 +154,7 @@ function init() {
     }
 
     function moveUp() {
+        mergedTiles = [];
         for (let c = 0; c < gridWidth; c++) {
             let col = []
 
@@ -159,6 +170,7 @@ function init() {
                     col[i] *= 2
                     col[i + 1] = 0
                     score += col[i]
+                    mergedTiles.push({ r: i, c: c });
                 }
             }
 
@@ -175,6 +187,7 @@ function init() {
     }
 
     function moveDown() {
+        mergedTiles = [];
         for (let c = 0; c < gridWidth; c++) {
             let col = []
 
@@ -190,6 +203,9 @@ function init() {
                     col[i] *= 2
                     col[i - 1] = 0
                     score += col[i]
+
+                    let finalRow = gridWidth - col.length + i;
+                    mergedTiles.push({ r: finalRow, c: c });
                 }
             }
 
@@ -204,6 +220,8 @@ function init() {
             }
         }
     }
+
+
 
     document.addEventListener('keydown', handleKeyPress);
     restartBtnElem.addEventListener('click', init);

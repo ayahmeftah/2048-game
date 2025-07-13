@@ -4,7 +4,7 @@ body {
     font-family: 'Josefin sans', sans-serif;
     text-align: center;
     margin: 0;
-    background-color: #ffffff;
+    background-color: #f4eded;
 }
 
 h1 {
@@ -58,14 +58,13 @@ h1 {
     align-items: center;
     font-size: 33px;
     font-weight: 500;
-    
 }
 
 .t2{
     background-color: #a0d8f1;
     color: black;
-
 }
+
 .t4{
     background-color: #00b2ff;
     color: #000000;
@@ -137,4 +136,21 @@ h1 {
 #restart:hover, #instructions:hover{
     background-color: #24a885;
     color: white;
+}
+
+@keyframes mergeEffect {
+    0% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.merged {
+    animation: mergeEffect 0.4s ease;
+    z-index: 10;
 }
