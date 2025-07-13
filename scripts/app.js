@@ -22,7 +22,7 @@ function init() {
     let wonGame = false;
 
     function render() {
-        score.textContent = score
+        scoreElem.textContent = score
         createGrid();
 
     }
@@ -98,21 +98,22 @@ function init() {
     }
 
 
-    function moveLeft(){
-        for (let r = 0; r < gridWidth ; r++){
-            let row = grid[r].filter((value) => value)
-            for (let i = 0; i < row.length - 1; i++){
+    function moveLeft() {
+        for (let r = 0; r < gridWidth; r++) {
 
-                if(row[i] === row[i + 1]){
+            let row = grid[r].filter((notEmptyCell) => notEmptyCell)
+            for (let i = 0; i < row.length - 1; i++) {
+
+                if (row[i] === row[i + 1]) {
                     row[i] *= 2
                     row[i + 1] = 0
                     score += row[i]
                 }
             }
 
-            row = row.filter((value) => value)
+            row = row.filter((notEmptyCell) => notEmptyCell)
 
-            while(row.length < gridWidth){
+            while (row.length < gridWidth) {
                 row.push(0)
             }
 
@@ -120,9 +121,10 @@ function init() {
         }
     }
 
-    function moveRight(){
-       for (let r = 0; r < gridWidth; r++) {
-            let row = grid[r].filter((value) => value)
+    function moveRight() {
+        for (let r = 0; r < gridWidth; r++) {
+
+            let row = grid[r].filter((notEmptyCell) => notEmptyCell)
 
             for (let i = row.length - 1; i > 0; i--) {
                 if (row[i] === row[i - 1]) {
@@ -131,7 +133,7 @@ function init() {
                     score += row[i]
                 }
             }
-             row = row.filter((value) => value)
+            row = row.filter((notEmptyCell) => notEmptyCell)
 
             while (row.length < gridWidth) {
                 row.unshift(0);
@@ -141,18 +143,43 @@ function init() {
         }
     }
 
+    function moveUp() {
+        for (let c = 0; c < gridWidth; c++) {
+            let col = []
 
-    function moveUp(){
+            for (let r = 0; r < gridWidth; r++) {
+                if (grid[r][c] !== 0) {
+                    col.push(grid[r][c])
+                }
+            }
+
+            for (let i = 0; i < col.length - 1; i++) {
+                if (col[i] === col[i + 1]) {
+
+                    col[i] *= 2
+                    col[i + 1] = 0
+                    score += col[i]
+                }
+            }
+
+            col = col.filter((notEmptyCell) => notEmptyCell)
+
+            while (col.length < gridWidth) {
+                col.push(0)
+            }
+
+            for (let r = 0; r < gridWidth; r++) {
+                grid[r][c] = col[r];
+            }
+        }
+    }
+
+    function moveDown() {
         
     }
 
-    function moveDown(){
-
-    }
-
-
     document.addEventListener('keydown', handleKeyPress);
-    restartBtnElem.addEventListener('click',init);
+    restartBtnElem.addEventListener('click', init);
 
     addRandomTile();
     addRandomTile();
