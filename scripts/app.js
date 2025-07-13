@@ -175,7 +175,34 @@ function init() {
     }
 
     function moveDown() {
-        
+        for (let c = 0; c < gridWidth; c++) {
+            let col = []
+
+            for (let r = 0; r < gridWidth; r++) {
+                if (grid[r][c] !== 0) {
+                    col.push(grid[r][c])
+                }
+            }
+
+            for (let i = col.length - 1; i > 0; i--) {
+                if (col[i] === col[i - 1]) {
+
+                    col[i] *= 2
+                    col[i - 1] = 0
+                    score += col[i]
+                }
+            }
+
+            col = col.filter((notEmptyCell) => notEmptyCell)
+
+            while (col.length < gridWidth) {
+                col.unshift(0)
+            }
+
+            for (let r = 0; r < gridWidth; r++) {
+                grid[r][c] = col[r];
+            }
+        }
     }
 
     document.addEventListener('keydown', handleKeyPress);
