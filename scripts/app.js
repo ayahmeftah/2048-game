@@ -21,7 +21,7 @@ function init() {
     let wonGame = false;
 
     function render() {
-        // scoreElem.textContent = score;
+
         createGrid();
 
     }
@@ -68,6 +68,48 @@ function init() {
 
     }
 
+    function handleKeyPress(event) {
+
+        if (grid[r][c]) return;
+
+        /* This switch statement was taken from stackoverflow, here is the link of the question (answerd by Gibolt):
+        https://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript
+        */
+        switch (event.key) {
+            case "ArrowLeft":
+                // Left pressed
+                break;
+            case "ArrowRight":
+                // Right pressed
+                break;
+            case "ArrowUp":
+                // Up pressed
+                break;
+            case "ArrowDown":
+                // Down pressed
+                break;
+        }
+
+    }
+
+    function moveDown(){
+
+    }
+
+    function moveUp(){
+
+    }
+
+    function moveLeft(){
+
+    }
+
+    function moveRight(){
+        
+    }
+
+
+    document.addEventListener('keydown', handleKeyPress);
     // restartBtnElem.addEventListener('click',init);
 
     addRandomTile();
