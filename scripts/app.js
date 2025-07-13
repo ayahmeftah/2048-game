@@ -140,7 +140,10 @@ function init() {
                     row[i] *= 2
                     row[i - 1] = 0
                     score += row[i]
-                    mergedTiles.push({ r: r, c: i });
+
+                    // Calculate final column position after merging
+                    let finalCol = gridWidth - row.length + i;
+                    mergedTiles.push({ r: r, c: finalCol });
                 }
             }
             row = row.filter((notEmptyCell) => notEmptyCell)
