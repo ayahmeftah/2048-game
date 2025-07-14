@@ -298,7 +298,15 @@ function init() {
         return true;
     }
 
+    playAgainBtnElem.addEventListener('click', () => {
+        popupElem.classList.add("hidden");
+        popupElem.classList.remove("show");
 
+        overlayElem.classList.add("hidden");
+        overlayElem.classList.remove("show");
+
+        init();
+    });
     document.addEventListener('keydown', handleKeyPress);
     restartBtnElem.addEventListener('click', init);
 
