@@ -25,6 +25,8 @@ function init() {
 
 
     function render() {
+        popupElem.classList.add("hidden");
+        popupElem.classList.remove("show");
         scoreElem.textContent = score
         createGrid();
     }
@@ -103,7 +105,7 @@ function init() {
 
         // Only add if grid changed (when tiles merge)
         if (!gridsEqual(prevGrid, grid)) {
-            addRandomTile(); 
+            addRandomTile();
         }
 
         render();
