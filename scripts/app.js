@@ -2,7 +2,13 @@ function init() {
 
     const gridElem = document.querySelector(".grid");
     const scoreElem = document.querySelector("#score-display");
+    const popupElem = document.querySelector("#popup");
+    const popupMessageElem = document.querySelector("#popup-message");
+    const popupScoreElem = document.querySelector("#popup-score");
+    const overlayElem = document.querySelector("#overlay");
     const restartBtnElem = document.querySelector("#restart");
+    const playAgainBtnElem = document.querySelector("#play-again")
+    const instructionBtnElem = document.querySelector("#instructions")
 
     const gridWidth = 4;
 
@@ -95,8 +101,14 @@ function init() {
                 break;
         }
 
-        addRandomTile()
-        render()
+        // Only add if grid changed (when tiles merge)
+        if (!gridsEqual(prevGrid, grid)) {
+            addRandomTile(); 
+        }
+
+        render();
+        checkWin();
+        checkGameOver();
     }
 
 
@@ -220,7 +232,73 @@ function init() {
         }
     }
 
-    
+    function checkWin() {
+        for (let r = 0; r < gridWidth; r++) {
+            for (let c = 0; c < gridWidth; c++) {
+                if (grid[r][c] === 2048 && !wonGame) {
+                    wonGame = true;
+
+                    setTimeout(() => {
+                        showPopup("You Won 🎉")
+                        confetti()
+                    }, 800);
+
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    function checkGameOver() {
+        // check if theres 0 cells which means game is not over
+        for (let row of grid) {
+            if (row.includes(0)) return false;
+        }
+
+        // check for possible merges
+        for (let r = 0; r < gridWidth; r++) {
+            for (let c = 0; c < gridWidth; c++) {
+                let current = grid[r][c];
+                if (
+                    (c < gridWidth - 1 && current === grid[r][c + 1]) ||
+                    (r < gridWidth - 1 && current === grid[r + 1][c])
+                ) {
+                    return false;
+                }
+            }
+        }
+
+        gameOver = true;
+        setTimeout(() => {
+            showPopup("You Lost 💔");
+        }, 1000);
+
+        return true;
+    }
+
+    function showPopup(message) {
+
+        popupMessageElem.textContent = message;
+        popupScoreElem.textContent = "Score: " + score;
+
+        popupElem.classList.remove("hidden");
+        popupElem.classList.add("show");
+
+        overlayElem.classList.remove("hidden");
+        overlayElem.classList.add("show");
+    }
+
+    function gridsEqual(a, b) {
+        for (let r = 0; r < gridWidth; r++) {
+            for (let c = 0; c < gridWidth; c++) {
+                if (a[r][c] !== b[r][c]) return false;
+            }
+        }
+        return true;
+    }
+
+
     document.addEventListener('keydown', handleKeyPress);
     restartBtnElem.addEventListener('click', init);
 
