@@ -2,30 +2,25 @@ function init() {
 
     const gridElem = document.querySelector(".grid");
     const scoreElem = document.querySelector("#score-display");
-    const gameOverElem = document.querySelector("#game-over");
     const restartBtnElem = document.querySelector("#restart");
 
-
     const gridWidth = 4;
-    const numberOfCells = gridWidth * gridWidth;
 
     let score = 0;
-    let cells = [];
+    let gameOver = false;
+    let wonGame = false;
     let grid = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
     ]
-
     let mergedTiles = [];
-    let gameOver = false;
-    let wonGame = false;
+
 
     function render() {
         scoreElem.textContent = score
         createGrid();
-
     }
 
     function createGrid() {
@@ -77,7 +72,9 @@ function init() {
 
     function handleKeyPress(event) {
 
-        if (gameOver) return;
+        if (gameOver || wonGame) return;
+
+        const prevGrid = grid.map(row => [...row]);
 
         /* This switch statement was taken from stackoverflow, here is the link of the question (answerd by Gibolt):
         https://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript
@@ -98,9 +95,8 @@ function init() {
                 break;
         }
 
-        addRandomTile();
-        render();
-
+        addRandomTile()
+        render()
     }
 
 
@@ -224,8 +220,7 @@ function init() {
         }
     }
 
-
-
+    
     document.addEventListener('keydown', handleKeyPress);
     restartBtnElem.addEventListener('click', init);
 

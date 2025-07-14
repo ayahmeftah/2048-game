@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2048 Game</title>
     <script src="scripts/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -26,7 +27,17 @@
         <div class="grid-container">
             <div class="grid"></div>
         </div>
-        <div id="game-over"></div>
+        <div id="popup" class="popup hidden">
+            <div id="popup-message"></div>
+            <div id="popup-score">Score: 0</div>
+            <button id="play-again">Play Again</button>
+        </div>
+
+        <div id="popup" class="popup hidden">
+            
+        </div>
+        
+        <div id="overlay" class="overlay hidden"></div>
         <div class="buttons">
             <button id="instructions">How to Play</button>
             <button id="restart">New Game</button>
