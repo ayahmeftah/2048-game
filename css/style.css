@@ -221,3 +221,54 @@ h1 {
     font-weight: 800;
     padding-bottom: 10px;
 }
+
+#instruction-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    z-index: 100;
+    width: 320px;
+    display: none;
+    text-align: left;
+}
+
+#instruction-popup.show {
+    display: block;
+}
+
+#instruction-popup h2 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+#instruction-popup ul {
+    padding-left: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#instruction-popup li {
+    margin-bottom: 10px;
+}
+
+.highlight-win {
+    color: green;
+    font-weight: bold;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+}
+

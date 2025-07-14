@@ -8,7 +8,6 @@ function init() {
     const overlayElem = document.querySelector("#overlay");
     const restartBtnElem = document.querySelector("#restart");
     const playAgainBtnElem = document.querySelector("#play-again")
-    const instructionBtnElem = document.querySelector("#instructions")
 
     const gridWidth = 4;
 
