@@ -8,12 +8,16 @@ function init() {
     const overlayElem = document.querySelector("#overlay");
     const restartBtnElem = document.querySelector("#restart");
     const playAgainBtnElem = document.querySelector("#play-again")
+    const instructionsBtnElem = document.querySelector("#instructions");
+    const instructionPopupElem = document.querySelector("#instruction-popup");
+    const closeInstructBtnElem = document.querySelector(".close-btn");
 
     const gridWidth = 4;
-
+    
     let score = 0;
     let gameOver = false;
     let wonGame = false;
+    let instructionOpen = false;
     let grid = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
@@ -21,7 +25,7 @@ function init() {
         [0, 0, 0, 0]
     ]
     let mergedTiles = [];
-
+    
 
     function render() {
         popupElem.classList.add("hidden");
@@ -31,9 +35,9 @@ function init() {
     }
 
     function createGrid() {
-
+        
         gridElem.innerHTML = '';
-
+        
         for (let r = 0; r < gridWidth; r++) {
             for (let c = 0; c < gridWidth; c++) {
                 const cell = document.createElement('div');
@@ -71,18 +75,18 @@ function init() {
             let randomCell = emptyCells[randomIndex];
             let r = randomCell.r;
             let c = randomCell.c;
-
+            
             grid[r][c] = Math.random() > 0.1 ? 2 : 4;
         }
-
+        
     }
 
     function handleKeyPress(event) {
-
+        
         if (gameOver || wonGame) return;
 
         const prevGrid = grid.map(row => [...row]);
-
+        
         /* This switch statement was taken from stackoverflow, here is the link of the question (answerd by Gibolt):
         https://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript
         The movement functions in each case were added by Ayah
@@ -94,13 +98,13 @@ function init() {
             case "ArrowRight":
                 moveRight()
                 break;
-            case "ArrowUp":
+                case "ArrowUp":
                 moveUp()
                 break;
-            case "ArrowDown":
-                moveDown()
-                break;
-        }
+                case "ArrowDown":
+                    moveDown()
+                    break;
+                }
 
         // Only add if grid changed (when tiles merge)
         if (!gridsEqual(prevGrid, grid)) {
@@ -119,7 +123,7 @@ function init() {
 
             let row = grid[r].filter((notEmptyCell) => notEmptyCell)
             for (let i = 0; i < row.length - 1; i++) {
-
+                
                 if (row[i] === row[i + 1]) {
                     row[i] *= 2
                     row[i + 1] = 0
@@ -141,9 +145,9 @@ function init() {
     function moveRight() {
         mergedTiles = [];
         for (let r = 0; r < gridWidth; r++) {
-
+            
             let row = grid[r].filter((notEmptyCell) => notEmptyCell)
-
+            
             for (let i = row.length - 1; i > 0; i--) {
                 if (row[i] === row[i - 1]) {
                     row[i] *= 2
@@ -160,16 +164,16 @@ function init() {
             while (row.length < gridWidth) {
                 row.unshift(0);
             }
-
+            
             grid[r] = row;
         }
     }
-
+    
     function moveUp() {
         mergedTiles = [];
         for (let c = 0; c < gridWidth; c++) {
             let col = []
-
+            
             for (let r = 0; r < gridWidth; r++) {
                 if (grid[r][c] !== 0) {
                     col.push(grid[r][c])
@@ -202,13 +206,13 @@ function init() {
         mergedTiles = [];
         for (let c = 0; c < gridWidth; c++) {
             let col = []
-
+            
             for (let r = 0; r < gridWidth; r++) {
                 if (grid[r][c] !== 0) {
                     col.push(grid[r][c])
                 }
             }
-
+            
             for (let i = col.length - 1; i > 0; i--) {
                 if (col[i] === col[i - 1]) {
 
@@ -256,7 +260,7 @@ function init() {
         for (let row of grid) {
             if (row.includes(0)) return false;
         }
-
+        
         // check for possible merges
         for (let r = 0; r < gridWidth; r++) {
             for (let c = 0; c < gridWidth; c++) {
@@ -282,14 +286,14 @@ function init() {
 
         popupMessageElem.textContent = message;
         popupScoreElem.textContent = "Score: " + score;
-
+        
         popupElem.classList.remove("hidden");
         popupElem.classList.add("show");
 
         overlayElem.classList.remove("hidden");
         overlayElem.classList.add("show");
     }
-
+    
     function gridsEqual(a, b) {
         for (let r = 0; r < gridWidth; r++) {
             for (let c = 0; c < gridWidth; c++) {
@@ -298,6 +302,22 @@ function init() {
         }
         return true;
     }
+    
+    instructionsBtnElem.addEventListener("click", () => {
+        instructionPopupElem.classList.remove("hidden");
+        instructionPopupElem.classList.add("show");
+        overlayElem.classList.remove("hidden");
+        overlayElem.classList.add("show");
+        instructionOpen = true;
+    });
+
+    closeInstructBtnElem.addEventListener("click", () => {
+        instructionPopupElem.classList.add("hidden");
+        instructionPopupElem.classList.remove("show");
+        overlayElem.classList.add("hidden");
+        overlayElem.classList.remove("show");
+        instructionOpen = false;
+    });
 
     playAgainBtnElem.addEventListener('click', () => {
         popupElem.classList.add("hidden");
@@ -308,6 +328,7 @@ function init() {
 
         init();
     });
+
     document.addEventListener('keydown', handleKeyPress);
     restartBtnElem.addEventListener('click', init);
 
