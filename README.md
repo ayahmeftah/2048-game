@@ -10,10 +10,9 @@ I chose to recreate the 2048 game because I’ve always loved how simple yet add
 
 ## 🚀 Getting Started
 
-🔗 **Play the game live here:** 
+### 🔗 **Play the game live here:** 
 link
 
----
 
 ### 🛠️ Run the Game Locally
 
@@ -56,5 +55,29 @@ code .
 Simply open the ```index.html``` file in your browser.
 - Right-click the file and select “Open with Live Server” (if using the Live Server extension in VS Code), or double-click to launch in your default browser.
 
-#### 📝 Planning materials:
-[2048 Game Planning Document]([https://your-deployment-link.com](https://docs.google.com/document/d/1MtmlmT9vYn7UBWe6s-BphcRmLJ9Xalv5t8NkNGkvDYg/edit?usp=sharing))
+### 📝 Planning materials:
+[2048 Game - Planning Document](https://docs.google.com/document/d/1MtmlmT9vYn7UBWe6s-BphcRmLJ9Xalv5t8NkNGkvDYg/edit?usp=sharing)
+[2048 Game – Trello Board](https://trello.com/b/chdpWe0g/2048-game)
+
+
+
+## 🕹️ How to Play
+- Use your **arrow keys** to move the tiles.
+- When two tiles with the **same number** touch, they **merge** into one.
+- Your goal is to reach the **2048 tile** , if the board gets filled and you didn't reach it, you lose.
+- Your Best Score is Tracked! Restarting the game will not save your score if you beat the best.
+
+## 📚 Attributions
+
+## 🧠 Technologies Used
+- HTML5
+- CSS
+- JavaScript
+- Git & GitHub
+
+## 🔮 Next Steps
+Planned enhancements and stretch goals:
+- ⏳ Add sliding tile animations for smoother gameplay
+- 📱 Make the game mobile responsive
+- 🔊 Add sound effects for tile merges, game over and winning conditions
+
