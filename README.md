@@ -8,10 +8,6 @@ I chose to recreate the 2048 game because I’ve always loved how simple yet add
 
 ---
 
-**2048** is a classic single-player puzzle game where the player combines numbered tiles by sliding them in four directions (up, down, left, right) to reach the elusive **2048 tile**. Each move merges tiles with the same number, doubling their value and increasing the challenge as the board fills up.
-
-I chose to recreate the 2048 game because I’ve always loved how simple yet addictive it is. It also seemed like a fun challenge to implement using JavaScript, especially handling the tile merging logic and game-over conditions.
-
 ## 🚀 Getting Started
 
 🔗 **Play the game live here:** 
@@ -59,3 +55,6 @@ code .
 #### ✅ 4. Run the game:
 Simply open the ```index.html``` file in your browser.
 - Right-click the file and select “Open with Live Server” (if using the Live Server extension in VS Code), or double-click to launch in your default browser.
+
+#### 📝 Planning materials:
+[2048 Game Planning Document]([https://your-deployment-link.com](https://docs.google.com/document/d/1MtmlmT9vYn7UBWe6s-BphcRmLJ9Xalv5t8NkNGkvDYg/edit?usp=sharing))
