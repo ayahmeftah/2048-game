@@ -1,5 +1,26 @@
 function init() {
 
+    /*-------------------------------- Constants --------------------------------*/
+    const gridWidth = 4;
+
+    /*---------------------------- Variables ---------------------------*/
+    let score = 0;
+    let gameOver = false;
+    let wonGame = false;
+    let instructionOpen = false;
+    let grid = [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+    ]
+    let mergedTiles = [];
+    let skippedBestSave = false;
+    let hasShownBestMessage = false;
+    let best = localStorage.getItem("bestScore") || 0;
+    let originalBestScore = parseInt(localStorage.getItem("bestScore")) || 0;
+
+    /*------------------------ Cached Element References ------------------------*/
     const gridElem = document.querySelector(".grid");
     const scoreElem = document.querySelector("#score-display");
     const popupElem = document.querySelector("#popup");
@@ -18,24 +39,7 @@ function init() {
     const yesBtnElem = document.querySelector("#yes-btn");
     const noBtnElem = document.querySelector("#no-btn");
 
-    const gridWidth = 4;
-
-    let score = 0;
-    let gameOver = false;
-    let wonGame = false;
-    let instructionOpen = false;
-    let grid = [
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0]
-    ]
-    let mergedTiles = [];
-    let skippedBestSave = false;
-    let hasShownBestMessage = false;
-    let best = localStorage.getItem("bestScore") || 0;
-    let originalBestScore = parseInt(localStorage.getItem("bestScore")) || 0;
-
+    /*-------------------------------- Functions --------------------------------*/
     function render() {
         popupElem.classList.add("hidden");
         popupElem.classList.remove("show");
@@ -44,6 +48,7 @@ function init() {
         bestElem.textContent = best
         best = parseInt(best)
 
+        // update best score if current score exceeds it
         if (score > best && !skippedBestSave) {
             best = score
             localStorage.setItem("bestScore", best);
@@ -81,7 +86,7 @@ function init() {
                     cell.textContent = val;
                     cell.classList.add(`t${val}`);
 
-                    // Check if this tile is in the mergedTiles list
+                    // check if this tile is in the mergedTiles list
                     if (mergedTiles.some(tile => tile.r === r && tile.c === c)) {
                         cell.classList.add('merged');
                     }
@@ -92,7 +97,7 @@ function init() {
     }
 
     function addRandomTile() {
-        // emptyCells stores the position of each empty cell as an object
+        // identify empty cells to place new tiles
         let emptyCells = [];
         for (let r = 0; r < gridWidth; r++) {
             for (let c = 0; c < gridWidth; c++) {
@@ -103,6 +108,7 @@ function init() {
             }
         }
 
+        // add a tile (2 or 4) at a random empty cell
         if (emptyCells.length > 0) {
 
             let randomIndex = Math.floor(Math.random() * emptyCells.length);
@@ -182,7 +188,7 @@ function init() {
                     row[i - 1] = 0
                     score += row[i]
 
-                    // Calculate final column position after merging
+                    // calculate final column position after merging
                     let finalCol = gridWidth - row.length + i;
                     mergedTiles.push({ r: r, c: finalCol });
                 }
@@ -307,7 +313,7 @@ function init() {
         setTimeout(() => {
             showPopup("You Lost 💔");
         }, 1500);
-        console.log(grid)
+
         return true;
     }
 
@@ -325,7 +331,7 @@ function init() {
     }
 
     function restartGame() {
-        
+
         score = 0;
         gameOver = false;
         wonGame = false;
@@ -354,8 +360,7 @@ function init() {
         render();
     }
 
-    /********** Event listeners ***********/
-
+    /*----------------------------- Event Listeners -----------------------------*/
     document.addEventListener('keydown', handleKeyPress);
 
     instructionsBtnElem.addEventListener("click", () => {
@@ -378,6 +383,7 @@ function init() {
         restartGame();
     });
 
+    // handle restart button click, showing confirmation if required
     restartBtnElem.addEventListener('click', () => {
         if (!gameOver && !wonGame && score >= best) {
             restartPopupElem.classList.remove("hidden");
@@ -389,6 +395,7 @@ function init() {
         }
     });
 
+    // confirm restart and reset best score if necessary
     yesBtnElem.addEventListener("click", () => {
         skippedBestSave = true;
         localStorage.setItem("bestScore", originalBestScore);
