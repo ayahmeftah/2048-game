@@ -13,6 +13,7 @@ function init() {
     const closeInstructBtnElem = document.querySelector(".close-btn");
     const bestElem = document.querySelector("#best-display");
     const newBestMsgElem = document.querySelector("#new-best-msg");
+    const popupBestElem = document.querySelector("#popup-best");
 
     
     const gridWidth = 4;
@@ -265,7 +266,7 @@ function init() {
             for (let c = 0; c < gridWidth; c++) {
                 if (grid[r][c] === 2048 && !wonGame) {
                     wonGame = true;
-
+                    // emoji from: https://emojipedia.org/party-popper 
                     setTimeout(() => {
                         showPopup("You Won 🎉")
                         confetti()
@@ -297,6 +298,7 @@ function init() {
             }
         }
 
+        // emoji from: https://emojipedia.org/broken-heart 
         gameOver = true;
         setTimeout(() => {
             showPopup("You Lost 💔");
@@ -309,6 +311,7 @@ function init() {
 
         popupMessageElem.textContent = message;
         popupScoreElem.textContent = "Score: " + score;
+        popupBestElem.textContent = "Best: " + best;
 
         popupElem.classList.remove("hidden");
         popupElem.classList.add("show");
