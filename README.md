@@ -5,7 +5,37 @@
 I chose to recreate the 2048 game because I’ve always loved how simple yet addictive it is. It also seemed like a fun challenge to implement using JavaScript, especially handling the tile merging logic and game-over conditions.
 
 Here’s a preview of the game in action:
+
 <img width="1227" height="892" alt="2048 game image" src="https://github.com/user-attachments/assets/81366923-68b0-4eea-a0ff-9d8431ba6b8f" />
+
+---
+## 📌 Game Features
+
+✨ This 2048 game includes several features:
+
+- 🎯 **Classic 2048 Mechanics**  
+  Slide tiles with arrow keys (↑, ↓, ←, →) to combine matching numbers and reach 2048.
+
+- 📈 **Live Score & Best Score Tracking**  
+  Tracks the player’s score in real-time and stores the best score in local storage.
+
+- 🌟 **New Best Score Notification**  
+  When a new high score is reached, a "New Best Score! ⭐" popup briefly appears.
+
+- 🎉 **Confetti Celebration on Win**  
+  Reaching the 2048 tile triggers a confetti animation using `canvas-confetti`.
+
+- 💔 **Game Over Detection**  
+  If the grid fills up with no valid moves left, the game ends with a “You Lost 💔” message.
+
+- 📖 **How to Play Instructions**  
+  A dedicated popup explains the rules and controls with a clean UI.
+
+- ♻️ **Restart Confirmation Popup**  
+  If you try to restart after beating your best score, a confirmation popup warns that it won’t be saved.
+  
+- 🌀 **Merge Animation**  
+  When two tiles merge, a smooth scaling animation highlights the event.
 
 ---
 
@@ -60,7 +90,7 @@ Simply open the ```index.html``` file in your browser.
 - [2048 Game - Planning Document](https://docs.google.com/document/d/1MtmlmT9vYn7UBWe6s-BphcRmLJ9Xalv5t8NkNGkvDYg/edit?usp=sharing)
 - [2048 Game – Trello Board](https://trello.com/b/chdpWe0g/2048-game)
 
-
+---
 
 ## 🕹️ How to Play
 - Use your **arrow keys** to move the tiles.
@@ -68,22 +98,28 @@ Simply open the ```index.html``` file in your browser.
 - Your goal is to reach the **2048 tile** , if the board gets filled and you didn't reach it, you lose.
 - Your Best Score is Tracked! Restarting the game will not save your score if you beat the best.
 
+---
+
 ## 📚 Attributions
 
 This game was built using custom code, but the following external resources were used and deserve credit:
 
 - 🎉 **Confetti Animation**  
   [canvas-confetti](https://www.npmjs.com/package/canvas-confetti) – used to show confetti when the player wins.  
-- 😀 Emojis
+- 😀 **Emojis**
   Emojis were sourced from [Emojipedia](https://emojipedia.org/)
-- ✍️ Font
+- ✍️ **Font**
   [Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans) from Google Fonts
+
+---
 
 ## 🧠 Technologies Used
 - HTML5
 - CSS
 - JavaScript
 - Git & GitHub
+
+---
 
 ## 🔮 Next Steps
 Planned enhancements and stretch goals:
