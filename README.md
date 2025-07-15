@@ -8,7 +8,7 @@ Here’s a preview of the game in action:
 
 <img width="1227" height="892" alt="2048 game image" src="https://github.com/user-attachments/assets/81366923-68b0-4eea-a0ff-9d8431ba6b8f" />
 
----
+
 ## 📌 Game Features
 
 ✨ This 2048 game includes several features:
@@ -37,7 +37,7 @@ Here’s a preview of the game in action:
 - 🌀 **Merge Animation**  
   When two tiles merge, a smooth scaling animation highlights the event.
 
----
+
 
 ## 🚀 Getting Started
 
@@ -90,7 +90,7 @@ Simply open the ```index.html``` file in your browser.
 - [2048 Game - Planning Document](https://docs.google.com/document/d/1MtmlmT9vYn7UBWe6s-BphcRmLJ9Xalv5t8NkNGkvDYg/edit?usp=sharing)
 - [2048 Game – Trello Board](https://trello.com/b/chdpWe0g/2048-game)
 
----
+
 
 ## 🕹️ How to Play
 - Use your **arrow keys** to move the tiles.
@@ -105,13 +105,13 @@ Simply open the ```index.html``` file in your browser.
 This game was built using custom code, but the following external resources were used and deserve credit:
 
 - 🎉 **Confetti Animation**  
-  [canvas-confetti](https://www.npmjs.com/package/canvas-confetti) – used to show confetti when the player wins.  
+  - [canvas-confetti](https://www.npmjs.com/package/canvas-confetti) – used to show confetti when the player wins.  
 - 😀 **Emojis**
-  Emojis were sourced from [Emojipedia](https://emojipedia.org/)
+  - Emojis were sourced from [Emojipedia](https://emojipedia.org/)
 - ✍️ **Font**
-  [Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans) from Google Fonts
+  - [Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans) from Google Fonts
 
----
+
 
 ## 🧠 Technologies Used
 - HTML5
@@ -119,7 +119,7 @@ This game was built using custom code, but the following external resources were
 - JavaScript
 - Git & GitHub
 
----
+
 
 ## 🔮 Next Steps
 Planned enhancements and stretch goals:
