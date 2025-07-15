@@ -15,9 +15,9 @@ function init() {
     const newBestMsgElem = document.querySelector("#new-best-msg");
     const popupBestElem = document.querySelector("#popup-best");
 
-    
+
     const gridWidth = 4;
-    
+
     let score = 0;
     let gameOver = false;
     let wonGame = false;
@@ -29,15 +29,15 @@ function init() {
         [0, 0, 0, 0]
     ]
     let mergedTiles = [];
-    
+
     let best = localStorage.getItem("bestScore") || 0;
-    let hasShownBestMessage = false; 
-    
+    let hasShownBestMessage = false;
+
     function render() {
         popupElem.classList.add("hidden");
         popupElem.classList.remove("show");
         scoreElem.textContent = score
-        
+
         bestElem.textContent = best
         best = parseInt(best)
 
@@ -107,9 +107,7 @@ function init() {
 
     function handleKeyPress(event) {
 
-        if (gameOver || wonGame) return;
-
-        const prevGrid = grid.map(row => [...row]);
+        if (gameOver || wonGame || instructionOpen) return;
 
         /* This switch statement was taken from stackoverflow, here is the link of the question (answerd by Gibolt):
         https://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript
@@ -130,19 +128,16 @@ function init() {
                 break;
         }
 
-        // Only add if grid changed (when tiles merge)
-        if (!gridsEqual(prevGrid, grid)) {
-            addRandomTile();
-        }
 
+        addRandomTile();
         render();
         checkWin();
         checkGameOver();
     }
 
-
     function moveLeft() {
         mergedTiles = [];
+
         for (let r = 0; r < gridWidth; r++) {
 
             let row = grid[r].filter((notEmptyCell) => notEmptyCell)
@@ -320,14 +315,6 @@ function init() {
         overlayElem.classList.add("show");
     }
 
-    function gridsEqual(a, b) {
-        for (let r = 0; r < gridWidth; r++) {
-            for (let c = 0; c < gridWidth; c++) {
-                if (a[r][c] !== b[r][c]) return false;
-            }
-        }
-        return true;
-    }
 
     instructionsBtnElem.addEventListener("click", () => {
         instructionPopupElem.classList.remove("hidden");
