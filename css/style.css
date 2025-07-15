@@ -111,6 +111,7 @@ h1 {
     background-color: #00d982;
     color: white;
     font-weight: 800;
+    /*from https://kinsta.com/blog/css-text-outline/ */
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }
