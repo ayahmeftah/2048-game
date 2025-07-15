@@ -375,13 +375,7 @@ function init() {
     });
 
     playAgainBtnElem.addEventListener('click', () => {
-        popupElem.classList.add("hidden");
-        popupElem.classList.remove("show");
-
-        overlayElem.classList.add("hidden");
-        overlayElem.classList.remove("show");
-
-        init();
+        restartGame();
     });
 
     restartBtnElem.addEventListener('click', () => {
@@ -391,7 +385,7 @@ function init() {
             overlayElem.classList.remove("hidden");
             overlayElem.classList.add("show");
         } else {
-            init();
+            restartGame();
         }
     });
 
@@ -404,7 +398,7 @@ function init() {
         restartPopupElem.classList.remove("show");
         overlayElem.classList.add("hidden");
         overlayElem.classList.remove("show");
-        init();
+        restartGame();
     });
 
     noBtnElem.addEventListener("click", () => {
