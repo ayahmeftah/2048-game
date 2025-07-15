@@ -324,6 +324,36 @@ function init() {
         overlayElem.classList.add("show");
     }
 
+    function restartGame() {
+        
+        score = 0;
+        gameOver = false;
+        wonGame = false;
+        instructionOpen = false;
+        grid = [
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ];
+        mergedTiles = [];
+        skippedBestSave = false;
+        hasShownBestMessage = false;
+
+        best = localStorage.getItem("bestScore") || 0;
+        originalBestScore = parseInt(localStorage.getItem("bestScore")) || 0;
+
+        popupElem.classList.add("hidden");
+        popupElem.classList.remove("show");
+
+        overlayElem.classList.add("hidden");
+        overlayElem.classList.remove("show");
+
+        addRandomTile();
+        addRandomTile();
+        render();
+    }
+
     /********** Event listeners ***********/
 
     document.addEventListener('keydown', handleKeyPress);
