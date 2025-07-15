@@ -19,7 +19,7 @@ function init() {
     const noBtnElem = document.querySelector("#no-btn");
 
     const gridWidth = 4;
-    
+
     let score = 0;
     let gameOver = false;
     let wonGame = false;
@@ -50,12 +50,20 @@ function init() {
             bestElem.textContent = best
 
             if (!hasShownBestMessage) {
+                newBestMsgElem.classList.add("show");
                 newBestMsgElem.classList.remove("hidden");
+
                 hasShownBestMessage = true;
+
+                setTimeout(() => {
+                    newBestMsgElem.classList.remove("show");
+                }, 2500);
+
                 setTimeout(() => {
                     newBestMsgElem.classList.add("hidden");
-                }, 2500);
+                }, 3000);
             }
+
         }
         createGrid();
     }

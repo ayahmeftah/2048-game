@@ -223,7 +223,6 @@ h1 {
     margin-top: 10px;
 }
 
-
 #popup-message{
     font-size: 40px;
     font-weight: 800;
@@ -282,12 +281,27 @@ h1 {
 }
 
 #new-best-msg {
-    color: green;
+    position: absolute;
+    top: 165px; /* Adjust this if needed */
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background-color: #d4ffec;
+    color: #00804b;
+    border: 2px solid #00c277;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 13px;
     font-weight: bold;
-    font-size: 18px;
-    margin-top: 10px;
-    animation: fadeOut 3s forwards;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
+#new-best-msg.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
 
 .hidden {
     display: none;
