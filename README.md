@@ -23,7 +23,7 @@ Here’s a preview of the game in action:
   When a new high score is reached, a "New Best Score! ⭐" popup briefly appears.
 
 - 🎉 **Confetti Celebration on Win**  
-  Reaching the 2048 tile triggers a confetti animation using `canvas-confetti`.
+  Reaching the 2048 tile triggers a confetti animation.
 
 - 💔 **Game Over Detection**  
   If the grid fills up with no valid moves left, the game ends with a “You Lost 💔” message.
@@ -42,7 +42,7 @@ Here’s a preview of the game in action:
 ## 🚀 Getting Started
 
 ### 🔗 **Play the game live here:** 
-link
+[2048 Game Link]()
 
 
 ### 🛠️ Run the Game Locally
