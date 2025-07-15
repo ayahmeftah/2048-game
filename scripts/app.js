@@ -306,8 +306,8 @@ function init() {
         gameOver = true;
         setTimeout(() => {
             showPopup("You Lost 💔");
-        }, 1000);
-
+        }, 1500);
+        console.log(grid)
         return true;
     }
 

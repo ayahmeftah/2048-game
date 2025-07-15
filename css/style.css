@@ -307,8 +307,10 @@ h1 {
     display: none;
 }
 
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    70% { opacity: 1; }
-    100% { opacity: 0; display: none; }
+#restart-popup{
+    font-size: 20px;
+}
+
+#restart-popup span {
+    color: green;
 }
