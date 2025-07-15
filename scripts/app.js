@@ -14,10 +14,12 @@ function init() {
     const bestElem = document.querySelector("#best-display");
     const newBestMsgElem = document.querySelector("#new-best-msg");
     const popupBestElem = document.querySelector("#popup-best");
-
+    const restartPopupElem = document.querySelector("#restart-popup");
+    const yesBtnElem = document.querySelector("#yes-btn");
+    const noBtnElem = document.querySelector("#no-btn");
 
     const gridWidth = 4;
-
+    
     let score = 0;
     let gameOver = false;
     let wonGame = false;
@@ -29,9 +31,10 @@ function init() {
         [0, 0, 0, 0]
     ]
     let mergedTiles = [];
-
-    let best = localStorage.getItem("bestScore") || 0;
+    let skippedBestSave = false;
     let hasShownBestMessage = false;
+    let best = localStorage.getItem("bestScore") || 0;
+    let originalBestScore = parseInt(localStorage.getItem("bestScore")) || 0;
 
     function render() {
         popupElem.classList.add("hidden");
@@ -41,15 +44,14 @@ function init() {
         bestElem.textContent = best
         best = parseInt(best)
 
-        if (score > best) {
-            best = score;
+        if (score > best && !skippedBestSave) {
+            best = score
             localStorage.setItem("bestScore", best);
-            bestElem.textContent = best;
+            bestElem.textContent = best
 
             if (!hasShownBestMessage) {
                 newBestMsgElem.classList.remove("hidden");
                 hasShownBestMessage = true;
-
                 setTimeout(() => {
                     newBestMsgElem.classList.add("hidden");
                 }, 2500);
@@ -127,7 +129,6 @@ function init() {
                 moveDown()
                 break;
         }
-
 
         addRandomTile();
         render();
@@ -315,6 +316,9 @@ function init() {
         overlayElem.classList.add("show");
     }
 
+    /********** Event listeners ***********/
+
+    document.addEventListener('keydown', handleKeyPress);
 
     instructionsBtnElem.addEventListener("click", () => {
         instructionPopupElem.classList.remove("hidden");
@@ -342,8 +346,35 @@ function init() {
         init();
     });
 
-    document.addEventListener('keydown', handleKeyPress);
-    restartBtnElem.addEventListener('click', init);
+    restartBtnElem.addEventListener('click', () => {
+        if (!gameOver && !wonGame && score >= best) {
+            restartPopupElem.classList.remove("hidden");
+            restartPopupElem.classList.add("show");
+            overlayElem.classList.remove("hidden");
+            overlayElem.classList.add("show");
+        } else {
+            init();
+        }
+    });
+
+    yesBtnElem.addEventListener("click", () => {
+        skippedBestSave = true;
+        localStorage.setItem("bestScore", originalBestScore);
+        best = originalBestScore;
+        bestElem.textContent = best;
+        restartPopupElem.classList.add("hidden");
+        restartPopupElem.classList.remove("show");
+        overlayElem.classList.add("hidden");
+        overlayElem.classList.remove("show");
+        init();
+    });
+
+    noBtnElem.addEventListener("click", () => {
+        restartPopupElem.classList.add("hidden");
+        restartPopupElem.classList.remove("show");
+        overlayElem.classList.add("hidden");
+        overlayElem.classList.remove("show");
+    });
 
     addRandomTile();
     addRandomTile();
