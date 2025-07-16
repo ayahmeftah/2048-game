@@ -106,7 +106,7 @@ This game was built using custom code, but the following external resources were
 
 -  **Confetti Animation** : [canvas-confetti](https://www.npmjs.com/package/canvas-confetti) – used to show confetti when the player wins.  
 -  **Emojis** : mojis were sourced from [Emojipedia](https://emojipedia.org/)
--  **Font** : Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans) from Google Fonts
+-  **Font** : [Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans) from Google Fonts
 
 
 
