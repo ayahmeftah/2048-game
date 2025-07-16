@@ -1,8 +1,9 @@
-# 🔢🎮 2048 Game
+# 🔢🎮 2048 Game - Project 1
 
-**2048** is a classic single-player puzzle game where the player combines numbered tiles by sliding them in four directions (up, down, left, right) to reach the elusive **2048 tile**. Each move merges tiles with the same number, doubling their value and increasing the challenge as the board fills up.
+## Introdunstion
+I was tasked to create an MVP functionality game for Project 1 of 'Front End Development' Unit at General Assembly. **2048** is a classic single-player puzzle game where the player combines numbered tiles by sliding them in four directions (up, down, left, right) to reach the **2048 tile**. Each move merges tiles with the same number, doubling their value and increasing the challenge as the board fills up.
 
-I chose to recreate the 2048 game because I’ve always loved how simple yet addictive it is. It also seemed like a fun challenge to implement using JavaScript, especially handling the tile merging logic and game-over conditions.
+I chose to create the 2048 game because I’ve always loved how simple yet addictive it is. It also seemed like a fun challenge to implement using JavaScript, especially handling the tile merging logic and game-over conditions.
 
 Here’s a preview of the game in action:
 
@@ -11,7 +12,7 @@ Here’s a preview of the game in action:
 
 ## 📌 Game Features
 
-✨ This 2048 game includes several features:
+This 2048 game includes several features:
 
 - 🎯 **Classic 2048 Mechanics**  
   Slide tiles with arrow keys (↑, ↓, ←, →) to combine matching numbers and reach 2048.
@@ -40,9 +41,11 @@ Here’s a preview of the game in action:
 
 
 ## 🚀 Getting Started
+> NOTICE !
+> This game can only be played on a pc or laptop ( Keyboard Needed )
 
 ### 🔗 **Play the game live here:** 
-[2048 Game Link]()
+- [2048 Game Deployed Link](https://ayahmeftah.github.io/2048-game/)
 
 
 ### 🛠️ Run the Game Locally
@@ -61,7 +64,7 @@ To play the game on your own device, follow these steps:
   - Open the **Terminal app** (already included in macOS)
   - Install Git (if it's not already installed):  
     [Download Git for macOS](https://git-scm.com/download/mac)
-  - Install **Visual Studio Code** (recommended):  
+  - Install a code editor like **Visual Studio Code**:  
     [Download VS Code](https://code.visualstudio.com/)
 
 #### ✅ 2. Clone the repository:
@@ -74,9 +77,7 @@ git clone https://github.com/ayahmeftah/2048-game.git
 
 #### ✅ 3. Open the project in VS Code:
 
-- You can either open the project manually in VS Code
-  **OR**
-- In Git Bash / Terminal:
+- You can either open the project manually in VS Code **OR** In Git Bash / Terminal:
 ```
 cd 2048-game
 code .
@@ -98,17 +99,16 @@ Simply open the ```index.html``` file in your browser.
 - Your goal is to reach the **2048 tile** , if the board gets filled and you didn't reach it, you lose.
 - Your Best Score is Tracked! Restarting the game will not save your score if you beat the best.
 
----
 
 ## 📚 Attributions
 
 This game was built using custom code, but the following external resources were used and deserve credit:
 
-- 🎉 **Confetti Animation**  
+-  **Confetti Animation**  
   - [canvas-confetti](https://www.npmjs.com/package/canvas-confetti) – used to show confetti when the player wins.  
-- 😀 **Emojis**
+-  **Emojis**
   - Emojis were sourced from [Emojipedia](https://emojipedia.org/)
-- ✍️ **Font**
+-  **Font**
   - [Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans) from Google Fonts
 
 
@@ -123,7 +123,7 @@ This game was built using custom code, but the following external resources were
 
 ## 🔮 Next Steps
 Planned enhancements and stretch goals:
-- ⏳ Add sliding tile animations for smoother gameplay
-- 📱 Make the game mobile responsive
-- 🔊 Add sound effects for tile merges, game over and winning conditions
+- Add sliding tile animations for smoother gameplay
+- Make the game mobile responsive
+- Add sound effects for tile merges, game over and winning conditions
 
