@@ -1,6 +1,6 @@
 # 🔢🎮 2048 Game - Project 1
 
-## Introdunstion
+## Introduction
 I was tasked to create an MVP functionality game for Project 1 of 'Front End Development' Unit at General Assembly. **2048** is a classic single-player puzzle game where the player combines numbered tiles by sliding them in four directions (up, down, left, right) to reach the **2048 tile**. Each move merges tiles with the same number, doubling their value and increasing the challenge as the board fills up.
 
 I chose to create the 2048 game because I’ve always loved how simple yet addictive it is. It also seemed like a fun challenge to implement using JavaScript, especially handling the tile merging logic and game-over conditions.
