@@ -385,7 +385,7 @@ function init() {
 
     // handle restart button click, showing confirmation if required
     restartBtnElem.addEventListener('click', () => {
-        if (!gameOver && !wonGame && score >= best) {
+        if (!gameOver && !wonGame && score >= best && best !== 0) {
             restartPopupElem.classList.remove("hidden");
             restartPopupElem.classList.add("show");
             overlayElem.classList.remove("hidden");
